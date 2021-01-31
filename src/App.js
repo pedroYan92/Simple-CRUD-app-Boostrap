@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import CostumerList from './components/CostumerList';
+import Footer from './components/Footer';
+
+function App(props) {
+  const { deleteCostumer } = props;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App mt-5'>
+      <div className='container-xxl mx-5 shadow p-3 mb-5 bg-white rounded'>
+        <div className='h2 mb-5'>Sistema de Cadastro</div>
+        <div className='row'>
+          <CostumerList deleteCostumer={deleteCostumer} />
+        </div>
+      </div>
+      <div className='container'>
+        <Footer />
+      </div>
     </div>
   );
 }
