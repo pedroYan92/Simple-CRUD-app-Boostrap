@@ -1,28 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { addCostumer } from '../redux/costumerSlice';
 
-function CostumerForm({ handleSubmit, handleInputChange, values, actionName }) {
-
-
-
-  // useEffect(() => {
-  //   if (props.currentId === '')
-  //     setValues({
-  //       ...initialValue,
-  //     });
-  //   else
-  //     setValues({
-  //       ...props.contactObjects[props.currentId],
-  //     });
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [props.currentId, props.contactObjects]);
+function CostumerForm({ handleSubmit, actionName }) {
+  const [values, setValues] = useState('');
+  const dispatch = useDispatch();
 
 
+  //  ADD CONTACT METHOD
+  const handleAdd = (event) => {
+    event.preventDefault();
+    if (values) {
+      dispatch(
+        addCostumer({
+          name: values.name,
+          email: values.email,
+          number: values.address,
+          address: values.address,
+        })
+      );
+    }
+  };
+
+  // HANDLE INPUT CHANGE METHOD
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
 
 
 
 
   return (
-    <form className='col-md-3 px-3 ' autoComplete='off' onSubmit={handleSubmit}>
+    <form className='col-md-3 px-3 ' autoComplete='off' onSubmit={handleAdd}>
       {/* <div className='h4 mb-3'>{currentId === '' ? 'Adicionar Cliente' : 'Atualizar Cliente'}</div> */}
       <div className='h4'>{values.id ? 'Editar' : 'Adicionar'}</div>
       <label className="form-label ">Nome Completo</label>

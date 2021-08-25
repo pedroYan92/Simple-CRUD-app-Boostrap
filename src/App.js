@@ -63,13 +63,7 @@ function App() {
       }
   }
 
-  //  ADD CONTACT METHOD
-  const handleAdd = (values) => {
-    const id = Math.floor(Math.random() * 10000) + 1;
-    const newContact = { id, ...values}
-    setContactObjects([...contactObjects, newContact])
-    setValues(initialValue)
-  }
+  
   
   const handleEdit = (values) => {
     setValues({
@@ -92,14 +86,7 @@ function App() {
     }      
   }
 
-  // HANDLE INPUT CHANGE METHOD
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
+  
 
     
 
